@@ -19,6 +19,7 @@
             <q-input
               filled
               rounded
+              required
               v-model="submitData.riotId"
               type="text"
               class="q-mt-sm"
