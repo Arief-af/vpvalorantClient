@@ -1,7 +1,5 @@
 import { boot } from "quasar/wrappers";
 import axios from "axios";
-import { useAuth } from "stores/auth";
-const auth = useAuth();
 // Be careful when using SSR for cross-request state pollution
 // due to creating a Singleton instance here;
 // If any client changes this (global) instance, it might be a
@@ -9,10 +7,7 @@ const auth = useAuth();
 // "export default () => {}" function below (which runs individually
 // for each client)
 const api = axios.create({
-  baseURL: "https://vpvalorantapi.ziaq.my.id/api/",
-  headers: {
-    Authorization: `Bearer ${auth.token}`,
-  },
+  baseURL: "https://vpvalorantapi.ziaq.my.id/api/"
 });
 
 export default boot(({ app }) => {
