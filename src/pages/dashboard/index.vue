@@ -1,11 +1,6 @@
 <template>
     <div>
-        <q-table
-            title="Table Title"
-            :data="data"
-            :columns="columns"
-            row-key="name"
-        />
+       WELCOME TO DASHBOARD
     </div>
 </template>
 

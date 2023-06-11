@@ -60,6 +60,13 @@ const routes = [
         meta: {
           requiresAuth: true,
         },
+        path: "/dashboard/",
+        component: () => import("pages/dashboard/transaction/Index.vue"),
+      },
+      {
+        meta: {
+          requiresAuth: true,
+        },
         path: "/dashboard/users",
         component: () => import("pages/dashboard/user/Index.vue"),
       },

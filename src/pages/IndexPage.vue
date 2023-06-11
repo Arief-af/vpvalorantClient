@@ -12,7 +12,7 @@
           class="q-mt-md"
           rounded
           label="TOP UP NOW!"
-          to="/register"
+          to="/topup"
         />
       </div>
       <div class="col-auto col-sm-6">

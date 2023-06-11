@@ -7,15 +7,8 @@
       <div class="navbar">
         <div class="navbar__title">VPValorant</div>
         <div class="navbar__toolbar">
-          <a href="#topup" style="text-decoration: none">Top Up</a>
-          <q-btn
-            v-if="!user"
-            to="/register"
-            color="primary"
-            rounded
-            label="sign up"
-          />
-          <q-btn v-else to="/profile" color="primary" rounded label="profile" />
+          <a @click="goto('/topup')" style="text-decoration: none; cursor: pointer">Top Up</a>
+          <a @click="goto('/')" style="text-decoration: none; cursor: pointer">Home</a>
         </div>
       </div>
     </header>
@@ -28,11 +21,14 @@
 import { useAuth } from "stores/auth";
 const user = useAuth().user
 import { api } from "boot/axios";
+import { useRouter } from "vue-router";
 let data = new FormData();
-data.append("id_role", 1);
-api
-  .get("roles/edit", { params: { id_role: 1 } })
-  .then((res) => console.log(res));
+const router  = useRouter()
+const goto = (name) => {
+  router.push({
+    path: name
+  })
+}
 </script>
 
 <style lang="sass">
