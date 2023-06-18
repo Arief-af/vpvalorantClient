@@ -1,7 +1,4 @@
 # vpvalorant (vpvalorant)
-
-Tugas UAS Itenas
-
 ## Install the dependencies
 ```bash
 yarn
