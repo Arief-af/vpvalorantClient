@@ -20,8 +20,15 @@
             required
             placeholder="password"
           />
+          <router-link to="/register" class="q-pa-lg">Didn't have account?</router-link>
           <div>
-            <q-btn class="float-right" style="margin-right:28px" label="Submit" type="submit" color="primary" />
+            <q-btn
+              class="float-right"
+              style="margin-right: 28px"
+              label="Submit"
+              type="submit"
+              color="primary"
+            />
           </div>
         </q-form>
       </div>
@@ -51,10 +58,12 @@ const user = reactive({
   username: "",
   password: "",
 });
-const router = useRouter()
+const router = useRouter();
 const onSubmit = async () => {
-  await store.login(user).then(()=> router.push({
-    path: '/topup'
-  }));
+  await store.login(user).then(() =>
+    router.push({
+      path: "/topup",
+    })
+  );
 };
 </script>

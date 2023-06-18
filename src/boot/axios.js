@@ -7,7 +7,7 @@ import axios from "axios";
 // "export default () => {}" function below (which runs individually
 // for each client)
 const api = axios.create({
-  baseURL: "https://vpvalorantapi.ziaq.my.id/api/"
+  baseURL: "http://localhost:3000/api/"
 });
 
 export default boot(({ app }) => {

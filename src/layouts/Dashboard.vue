@@ -4,6 +4,7 @@
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
         <q-toolbar-title> Dashboard </q-toolbar-title>
+        <q-btn color="primary" label="logout" @click="Logout" />
       </q-toolbar>
     </q-header>
 
@@ -45,7 +46,7 @@
             <q-item-section avatar>
               <q-icon color="white" name="list" />
             </q-item-section>
-            <q-item-section>All Categories</q-item-section>
+            <q-item-section>All Roles</q-item-section>
           </q-item>
         </q-expansion-item>
 
@@ -75,7 +76,7 @@
             <q-item-section avatar>
               <q-icon color="white" name="list" />
             </q-item-section>
-            <q-item-section>All Products</q-item-section>
+            <q-item-section>All Users</q-item-section>
           </q-item>
         </q-expansion-item>
 
@@ -139,7 +140,7 @@
           </q-item>
         </q-expansion-item>
 
-         <q-expansion-item
+        <q-expansion-item
           expand-separator
           icon="category"
           label="Transactions"

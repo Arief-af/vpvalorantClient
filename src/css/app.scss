@@ -123,6 +123,7 @@ header {
   height: 53px;
   background: #ffffff;
   display: flex;
+  cursor: pointer;
   justify-content: center;
   align-items: center;
   border-radius: 26.5px;
@@ -139,6 +140,7 @@ header {
 }
 
 .top-up__payment-methods_content {
+  cursor: pointer;
   background: #ffffff;
   border-radius: 26.5px;
   padding-top: 30px;

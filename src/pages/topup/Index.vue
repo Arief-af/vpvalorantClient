@@ -5,8 +5,6 @@
         <video ref="videoElement" class="hero__video" autoplay="autoplay">
           <source src="video/hero.mp4" type="video/mp4" />
         </video>
-        <!-- <q-video ref="videoPlayer" src="video/hero.mp4" class="hero__video"
-        :ratio=16/9 /> -->
       </div>
     </div>
 
@@ -91,7 +89,7 @@ let submitData = ref({
 
 let banks = ref([]);
 let vouchers = ref([]);
-const router = useRouter()
+const router = useRouter();
 
 const changeVp = (voucher) => {
   const filteredArray = vouchers.value.filter(
@@ -149,8 +147,8 @@ const onSubmit = () => {
             })
             .then((res) => {
               router.push({
-                params: {id: res.data.data.id_checkout},
-                name: 'checkout'
+                params: { id: res.data.data.id_checkout },
+                name: "checkout",
               });
             });
         });
