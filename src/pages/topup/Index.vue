@@ -85,7 +85,6 @@ import { api } from "boot/axios";
 import { useAuth } from "stores/auth";
 const videoElement = ref(null);
 const store = useAuth()
-console.log(store.user.id_user);
 
 let submitData = ref({
   total_price: 0,
@@ -108,7 +107,6 @@ const fetch = () => {
   });
 
   api.get("banks").then((res) => {
-    console.log(res.headers );
     const ResValue = res.data.data[0];
     const updatedData = ResValue.map((item) => {
       return {

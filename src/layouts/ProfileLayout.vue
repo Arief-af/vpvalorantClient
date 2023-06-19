@@ -33,7 +33,6 @@ const fetch = () => {
     .get("checkout/user", { params: { user_id: store.user.id_user } })
     .then((res) => {
       transaction.value = res.data.data[0];
-      console.log(transaction.value);
     });
 };
 

@@ -96,7 +96,6 @@ let users = ref([]);
 const fetch = () => {
   api.get("users").then((res) => {
     users.value = res.data.data[0];
-    console.log(users.value);
   });
 };
 

@@ -13,13 +13,8 @@ export const useAuth = defineStore("auth", {
       try {
         await api
           .post("register", credentials)
-          .then((response) => {
-            console.info(response);
-          })
-          .catch((err) => console.info("register error ", err));
       } catch (error) {
         this.user = { role_name: "none" };
-        console.error("Error loading new arrivals: ", error);
         return error;
       }
     },
@@ -34,7 +29,6 @@ export const useAuth = defineStore("auth", {
         });
       } catch (error) {
         this.user = null;
-        console.error("Error loading new arrivals: ", error);
         return error;
       }
     },
@@ -48,7 +42,6 @@ export const useAuth = defineStore("auth", {
           return res;
         });
       } catch (err) {
-        console.error("Error loading new arrivals: ", err);
         return err;
       }
     },

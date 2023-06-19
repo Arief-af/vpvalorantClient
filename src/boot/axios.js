@@ -27,7 +27,6 @@ export default boot(({ app }) => {
   api.interceptors.request.use(
     (config) => {
       if (authStore.token) {
-        console.log(`Bearer ${authStore.token}`);
         config.headers["Authorization"] = `Bearer ${authStore.token}`;
       }
 
