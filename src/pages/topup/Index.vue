@@ -5,8 +5,6 @@
         <video ref="videoElement" class="hero__video" autoplay="autoplay">
           <source src="video/hero.mp4" type="video/mp4" />
         </video>
-        <!-- <q-video ref="videoPlayer" src="video/hero.mp4" class="hero__video"
-        :ratio=16/9 /> -->
       </div>
     </div>
 
@@ -84,14 +82,18 @@
 import { onMounted, ref } from "vue";
 import { useRouter } from "vue-router";
 import { api } from "boot/axios";
+import { useAuth } from "stores/auth";
 const videoElement = ref(null);
+const store = useAuth()
+console.log(store.user.id_user);
+
 let submitData = ref({
   total_price: 0,
 });
 
 let banks = ref([]);
 let vouchers = ref([]);
-const router = useRouter()
+const router = useRouter();
 
 const changeVp = (voucher) => {
   const filteredArray = vouchers.value.filter(
@@ -106,6 +108,7 @@ const fetch = () => {
   });
 
   api.get("banks").then((res) => {
+    console.log(res.headers );
     const ResValue = res.data.data[0];
     const updatedData = ResValue.map((item) => {
       return {
@@ -127,7 +130,7 @@ const onSubmit = () => {
   api
     .post("transactions/create", {
       voucher_id: submitData.value.voucher_id,
-      user_id: "5590a8b8-af02-4af3-af77-f6e32d59156a	",
+      user_id: store.user.id_user,
       riotId: submitData.value.riotId,
     })
     .then((res) => {
@@ -149,8 +152,8 @@ const onSubmit = () => {
             })
             .then((res) => {
               router.push({
-                params: {id: res.data.data.id_checkout},
-                name: 'checkout'
+                params: { id: res.data.data.id_checkout },
+                name: "checkout",
               });
             });
         });

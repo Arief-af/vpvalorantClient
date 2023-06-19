@@ -4,6 +4,7 @@
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
         <q-toolbar-title> Dashboard </q-toolbar-title>
+        <q-btn color="primary" label="logout" @click="logout" />
       </q-toolbar>
     </q-header>
 
@@ -45,7 +46,7 @@
             <q-item-section avatar>
               <q-icon color="white" name="list" />
             </q-item-section>
-            <q-item-section>All Categories</q-item-section>
+            <q-item-section>All Roles</q-item-section>
           </q-item>
         </q-expansion-item>
 
@@ -75,7 +76,7 @@
             <q-item-section avatar>
               <q-icon color="white" name="list" />
             </q-item-section>
-            <q-item-section>All Products</q-item-section>
+            <q-item-section>All Users</q-item-section>
           </q-item>
         </q-expansion-item>
 
@@ -139,7 +140,7 @@
           </q-item>
         </q-expansion-item>
 
-         <q-expansion-item
+        <q-expansion-item
           expand-separator
           icon="category"
           label="Transactions"
@@ -168,17 +169,34 @@
 
 <script>
 import { ref } from "vue";
+import { useAuth } from 'stores/auth'
 import { useRouter } from "vue-router";
+import { useQuasar } from 'quasar';
 export default {
   setup() {
     const leftDrawerOpen = ref(false);
+    const $q = useQuasar()
     const router = useRouter();
     const goto = (name) => {
       router.push({
         path: name,
       });
     };
+    const store = useAuth()
+    const logout = () => {
+      store.logout().then((res) => {
+        $q.notify({
+          message: res.data.message,
+          color: "primary",
+          position: "top-right",
+        });
+        router.push({
+          path: "/login",
+        });
+      });
+    };
     return {
+      logout,
       leftDrawerOpen,
       goto,
       toggleLeftDrawer() {

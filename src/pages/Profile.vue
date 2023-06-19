@@ -29,7 +29,7 @@
             placeholder="username"
           />
 
-          <div to="/login" class="q-pa-lg"><u>Update Password</u></div>
+          <div class="q-pa-lg">Update Password</div>
           <q-input
             v-model="data"
             filled
@@ -44,13 +44,6 @@
               label="update"
               rounded
               type="submit"
-            />
-            <q-btn
-              color="dark"
-              class="float-right q-mr-md q-mt-md"
-              label="logout"
-              rounded
-              @click="logout"
             />
           </div>
         </q-form>

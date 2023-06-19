@@ -8,6 +8,7 @@
             v-model="user.name"
             filled
             rounded
+            required
             type="text"
             placeholder="name"
           />
@@ -15,6 +16,7 @@
             v-model="user.username"
             filled
             rounded
+            required
             type="text"
             placeholder="username"
           />
@@ -22,6 +24,7 @@
             v-model="user.email"
             filled
             rounded
+            required
             type="email"
             placeholder="email"
           />
@@ -29,11 +32,12 @@
             v-model="user.password"
             filled
             rounded
+            required
             type="password"
             placeholder="password"
           />
 
-          <a href="#login" class="q-pa-lg"><u>Already Have Account?</u></a>
+          <router-link to="/login" class="q-pa-lg">Already Have Account?</router-link>
 
           <div>
             <q-btn

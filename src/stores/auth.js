@@ -1,9 +1,10 @@
 import { defineStore } from "pinia";
 import { api } from "boot/axios";
+
 export const useAuth = defineStore("auth", {
   state: () => ({
-    user: 0,
-    isAuthenticated: false,
+    user: null,
+    isLoggedIn: false,
     token: null,
   }),
 
@@ -17,37 +18,37 @@ export const useAuth = defineStore("auth", {
           })
           .catch((err) => console.info("register error ", err));
       } catch (error) {
-        this.user = {role_name: 'none'};
-        console.error("Error loading new arrivals : ", error);
+        this.user = { role_name: "none" };
+        console.error("Error loading new arrivals: ", error);
         return error;
       }
     },
 
     async login(credentials) {
       try {
-        await api.post("/login", credentials).then((res) => {
-          console.log(res);
-          (this.user = res.data.user),
-            (this.token = res.data.token),
-            (this.isAuthenticated = true);
+        return await api.post("/login", credentials).then((res) => {
+          this.user = res.data.user;
+          this.token = res.data.token;
+          this.isLoggedIn = true;
+          return res;
         });
       } catch (error) {
         this.user = null;
-        console.error("Error loading new arrivals : ", error);
+        console.error("Error loading new arrivals: ", error);
         return error;
       }
     },
 
     async logout() {
       try {
-        this.token = false;
-        this.user = null;
-        this.isAuthenticated = false;
-        router.push({
-          path: '/login'
-        })
+        return api.post("logout").then((res) => {
+          this.token = null;
+          this.user = null;
+          this.isLoggedIn = false;
+          return res;
+        });
       } catch (err) {
-        console.error("Error loading new arrivals : ", err);
+        console.error("Error loading new arrivals: ", err);
         return err;
       }
     },

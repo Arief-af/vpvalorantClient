@@ -11,7 +11,7 @@
   width: 100%;
 }
 
-.content__wrapper_dashboard{
+.content__wrapper_dashboard {
   padding-top: 180px;
   margin: 0 auto;
   width: 100%;
@@ -32,10 +32,10 @@
   justify-content: space-between;
 }
 
-.navbar__toolbar{
-    gap: 20px;
-    display: flex;
-    align-items: center;
+.navbar__toolbar {
+  gap: 20px;
+  display: flex;
+  align-items: center;
 }
 
 header {
@@ -61,6 +61,18 @@ header {
   letter-spacing: 0.01em;
 
   color: #000000;
+}
+
+@media only screen and (max-width: 600px) {
+  .navbar__title {
+    font-size: 15px;
+    padding-right:  5px;
+  }
+  .navbar__toolbar {
+    gap: 10px;
+    display: flex;
+    align-items: center;
+  }
 }
 
 .top-up__title {
@@ -123,6 +135,7 @@ header {
   height: 53px;
   background: #ffffff;
   display: flex;
+  cursor: pointer;
   justify-content: center;
   align-items: center;
   border-radius: 26.5px;
@@ -139,6 +152,7 @@ header {
 }
 
 .top-up__payment-methods_content {
+  cursor: pointer;
   background: #ffffff;
   border-radius: 26.5px;
   padding-top: 30px;
@@ -188,7 +202,7 @@ header {
   object-fit: cover;
 }
 
-.hero__video{
+.hero__video {
   overflow: hidden;
   width: 100% !important;
   border-radius: 20px;
