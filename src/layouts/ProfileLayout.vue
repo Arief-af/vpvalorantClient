@@ -22,14 +22,19 @@
 </template>
 
 <script setup>
+import Navbar from "../components/Navbar.vue";
 import { api } from "boot/axios";
 import { ref } from "vue";
 let transaction = ref([]);
+import { useAuth } from "stores/auth";
+const store = useAuth();
 const fetch = () => {
-  api.get("checkout").then((res) => {
-    transaction.value = res.data.data[0];
-    console.log(transaction.value);
-  });
+  api
+    .get("checkout/user", { params: { user_id: store.user.id_user } })
+    .then((res) => {
+      transaction.value = res.data.data[0];
+      console.log(transaction.value);
+    });
 };
 
 fetch();

@@ -10,8 +10,6 @@
         :rows="virtual_account"
         :columns="columns"
         row-key="__index"
-        :rows-per-page-options="[0]"
-        hide-bottom
       >
 
         <!-- action components -->

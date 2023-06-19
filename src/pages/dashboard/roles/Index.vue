@@ -26,7 +26,6 @@
         :rows="roles"
         :columns="columns"
         row-key="__index"
-        :rows-per-page-options="[0]"
       >
         <!-- action components -->
         <template #body-cell-action="props">

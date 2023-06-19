@@ -4,7 +4,7 @@
       <q-toolbar>
         <q-btn dense flat round icon="menu" @click="toggleLeftDrawer" />
         <q-toolbar-title> Dashboard </q-toolbar-title>
-        <q-btn color="primary" label="logout" @click="Logout" />
+        <q-btn color="primary" label="logout" @click="logout" />
       </q-toolbar>
     </q-header>
 
@@ -169,17 +169,34 @@
 
 <script>
 import { ref } from "vue";
+import { useAuth } from 'stores/auth'
 import { useRouter } from "vue-router";
+import { useQuasar } from 'quasar';
 export default {
   setup() {
     const leftDrawerOpen = ref(false);
+    const $q = useQuasar()
     const router = useRouter();
     const goto = (name) => {
       router.push({
         path: name,
       });
     };
+    const store = useAuth()
+    const logout = () => {
+      store.logout().then((res) => {
+        $q.notify({
+          message: res.data.message,
+          color: "primary",
+          position: "top-right",
+        });
+        router.push({
+          path: "/login",
+        });
+      });
+    };
     return {
+      logout,
       leftDrawerOpen,
       goto,
       toggleLeftDrawer() {

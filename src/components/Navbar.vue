@@ -7,14 +7,14 @@
       <div class="navbar__title">VPValorant</div>
       <div class="navbar__toolbar">
         <a
-          @click="goto('/topup')"
+          v-for="navLink in navbarLink"
+          :key="navLink"
+          @click="goTo(navLink.link)"
           style="text-decoration: none; cursor: pointer"
-          >Top Up</a
-        >
-        <a @click="goto('/')" style="text-decoration: none; cursor: pointer"
-          >Home</a
-        >
-        <q-btn color="primary" label="Login" @click="goto('/login')" />
+          >{{ navLink.label }}
+        </a>
+        <profile-btn :logout="logout" :goTo="goTo" :user="user" v-if="user" />
+        <q-btn v-else color="primary" label="Login" @click="goTo('login')" />
       </div>
     </div>
   </header>
@@ -25,11 +25,39 @@ import { api } from "boot/axios";
 import { ref } from "vue";
 import { useAuth } from "stores/auth";
 import { useRouter } from "vue-router";
+import ProfileBtn from "./ProfileBtn.vue";
+import { useQuasar } from "quasar";
+
+const $q = useQuasar();
 const router = useRouter();
-const user = useAuth().user;
-const goto = (name) => {
+const store = useAuth();
+const user = store.user;
+const navbarLink = ref([
+  {
+    label: "home",
+    link: "home",
+  },
+  {
+    label: "topup",
+    link: "topup",
+  },
+]);
+
+const goTo = (name) => {
   router.push({
-    path: name,
+    name: name,
+  });
+};
+const logout = () => {
+  store.logout().then((res) => {
+    $q.notify({
+      message: res.data.message,
+      color: "primary",
+      position: "top-right",
+    });
+    router.push({
+      path: "/login",
+    });
   });
 };
 </script>
